@@ -1,0 +1,24 @@
+[base]
+file_path=data.csv
+output_file=selectorWeight_data_guesmi.properties
+num_clusters=12
+
+[columns_csv]
+cols=ElementName, Langage, Tag, Prop1, Prop2, Prop3, Prop4, Prop5
+
+[properties_dict]
+'data-focus':1,
+'label':2,
+'id':3,
+'profil-list':4,
+'aria-label':5,
+'class':6,
+'text':7,
+'name':8,
+'for':9,
+'grid':10,
+'index':11,
+'n':0
+
+[prop_columns]
+prop_columns = Prop1, Prop2, Prop3, Prop4, Prop5
