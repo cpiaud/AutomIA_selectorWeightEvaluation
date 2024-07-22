@@ -78,6 +78,7 @@ output_file=selectorWeight_data_gpt.properties
 cols=ElementName, Langage, Tag, Prop1, Prop2, Prop3, Prop4, Prop5
 
 Voir un exemple de fichier : config_gpt.txt.
+
 Lister dans le code open_ai_approch2.py dans la section messages les propriétés:
 ```bash
         - data-focus
