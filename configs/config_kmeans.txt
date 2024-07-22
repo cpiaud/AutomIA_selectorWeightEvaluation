@@ -1,6 +1,6 @@
 [base]
 file_path=data.csv
-output_file=selectorWeight_data_guesmi.properties
+output_file=selectorWeight_data_kmeans_approch1.properties
 num_clusters=12
 
 [columns_csv]
