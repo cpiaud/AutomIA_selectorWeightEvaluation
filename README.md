@@ -1,8 +1,8 @@
-# AutomIA_selectorWeightEvaluation
+# AutomIA_selectorWeightEvaluation Version 01
 Use Machine Learning to evaluate Weight of properties to find Element with AutomIA_ElementFinder.
 
 Ce travail consite à déterminer les poids de chaque propriété en utilisant les méthodes de machine learning(clustring) et de l'IA(OpenAI) :
-- Le fichier en sortie de machine learning doit s'appeller "selectorWeight.properties" et être constitué d'une liste de pair clé:valeur.
+- Le fichier en sortie de machine learning doit s'appeller "selectorWeight.properties" et être constitué d'une liste de pair clé=valeur.
 - La Clé est un attribut/propriété d'un élément (ex: id, class, name, type...)
 - La valeur est un poids de 0 à 100 qui donne l'importance de l'attribut pour retrouver un élément par rapport aux autres attributs.
 
@@ -15,12 +15,12 @@ La préparation des données consiste à structurer nos données sous forme CSV 
 Voir un exemple de préparation sous forme data.csv
 ### 2- Configuration des entrées/sorties
 Configuration des parametres dans un fichier config_kmeans.txt sous la forme:
-
+```bash
 [base]
 
 file_path=
 
-output_file=selectorWeight_data.properties
+output_file=selectorWeight_data_kmeans_approch1.properties
 
 num_clusters=
 
@@ -33,13 +33,14 @@ cols=
 [prop_columns]
 
 prop_columns = 
+```
 
-- [base] : comprend le path des data, le nom de l'output et le num_clusters (nombre des propriétés unique +1).
+- [base] : comprend le path des data(csv), le nom de l'output et le num_clusters (nombre des propriétés unique +1).
 - [columns_csv] : comprend tous les noms des colonnes dans le fichier csv.
 - [properties_dict] : attribuer à chaque propriété(id,class,name,etc) un numéro (entre 1 et nombre de propriétés et 0 pour "n").
 - [prop_columns] : la liste des colonnes qui sont déstinés pour les propriétés .
 
-Voir un exemple de fichier : config.txt
+Voir un exemple de fichier : config_kmeans.txt
 
 ## 3-Installation et exécution 
 - Créer un environement virtuel :
@@ -47,7 +48,7 @@ Voir un exemple de fichier : config.txt
 Python -m venv myenv
 ```
 
-- Créer un environement virtuel :
+- Installer les packages nécessaires :
 ```bash
 pip install -r requirements.txt
 ```
@@ -69,16 +70,18 @@ La préparation des données consiste à structurer nos données sous forme CSV 
 Voir un exemple de préparation sous forme data.csv
 ### 3- Configuration des entrées/sorties
 Configuration des parametres dans un fichier config_gpt.txt sous la forme:
-
+```bash
 [base]
-file_path=data.csv
+
+file_path=
+
 output_file=selectorWeight_data_gpt.properties
 
 [columns_csv]
-cols=ElementName, Langage, Tag, Prop1, Prop2, Prop3, Prop4, Prop5
 
+cols=
+```
 Voir un exemple de fichier : config_gpt.txt.
-
 Lister dans le code open_ai_approch2.py dans la section messages les propriétés:
 ```bash
         - data-focus
@@ -110,5 +113,24 @@ pip install -r requirements.txt
 python open_ai_approch2.py
 ```
 ## Resultats
-Les résultats obtenus avec les deux approches sont comparables en ce qui concerne la force des poids obtenus. 
-NB : les valeurs des poids ne sont pas identiques pour les deux approches, mais elles peuvent être expliquées de la même manière.
+Les résultats obtenus avec les deux approches(voir weights/...) sont comparables en ce qui concerne la force des poids obtenus. 
+
+NB : les valeurs des poids ne sont pas identiques pour les deux approches, mais elles peuvent être expliquées de la même manière.Voci un exemple des résultats pour les données utilisés (data.csv):
+
+
+| propriété       | Kmeans | openai |
+|----------------|---------|---------|
+| data-focus     | 5       | 10      |
+| label          | 15      | 30      |
+| id             | 24      | 50      |
+| profil-list    | 5       | 10      |
+| aria-label     | 19      | 30      |
+| class          | 29      | 60      |
+| text           | 5       | 10      |
+| name           | 5       | 10      |
+| for            | 5       | 10      |
+| grid           | 5       | 10      |
+| index          | 19      | 40      |
+
+
+Les approches sont généralisées , il suffit de suivre les étapes et les configurations nécessaires.
