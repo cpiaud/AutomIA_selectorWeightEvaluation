@@ -4,21 +4,13 @@ output_file=selectorWeight_data_kmeans_approch1.properties
 num_clusters=12
 
 [columns_csv]
-cols=ElementName, Langage, Tag, Prop1, Prop2, Prop3, Prop4, Prop5
+# Utilisation du format JSON pour la liste
+cols=["ElementName", "Langage", "Tag", "Prop1", "Prop2", "Prop3", "Prop4", "Prop5"]
 
 [properties_dict]
-'data-focus':1,
-'label':2,
-'id':3,
-'profil-list':4,
-'aria-label':5,
-'class':6,
-'text':7,
-'name':8,
-'for':9,
-'grid':10,
-'index':11,
-'n':0
+# Utilisation d'une seule clé 'mapping' avec une valeur au format JSON pour le dictionnaire
+mapping={"label": 1, "id": 2, "class": 3, "text": 4, "name": 5, "textcontent": 6, "ng-click": 7, "data-ng-click": 8, "ng-repeat": 9, "data-ng-show": 10, "onclick": 11, "n": 0}
 
 [prop_columns]
-prop_columns = Prop1, Prop2, Prop3, Prop4, Prop5
+# Utilisation du format JSON pour la liste
+prop_columns = ["Prop1", "Prop2", "Prop3", "Prop4", "Prop5"]

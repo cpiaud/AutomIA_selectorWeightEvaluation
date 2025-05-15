@@ -1,0 +1,22 @@
+ElementName;Langage;Tag;Prop1;Prop2;Prop3;Prop4;Prop5
+element1;Angular JS;div;data-focus;n;n;n;n
+element2;Angular JS;div;label;for;n;n;n
+element3;Angular JS;div;id;n;n;n;n
+element4;Angular JS;div;profil-list;grid;n;n;n
+element5;Angular JS;button;label;n;n;n;n
+element6;Angular JS;span;id;n;n;n;n
+element7;Angular JS;li;aria-label;n;n;n;n
+element8;Angular JS;div;class;n;n;n;n
+element9;Angular JS;button;class;label;n;n;n
+element10;Angular JS;span;id;n;n;n;n
+element11;Angular JS;div;class;index;n;n;n
+element12;Angular JS;span;text;n;n;n;n
+element13;Angular JS;span;id;n;n;n;n
+element14;Angular JS;span;class;aria-label;n;n;n
+element15;Angular JS;div;class;index;n;n;n
+element16;Angular JS;button;class;index;n;n;n
+element17;Vue JS;*;id;n;n;n;n
+element18;Vue JS;*;name;n;n;n;n
+element19;Vue JS;a;aria-label;n;n;n;n
+element20;Vue JS;button;aria-label;n;n;n;n
+element21;Vue JS;field;index;n;n;n;n

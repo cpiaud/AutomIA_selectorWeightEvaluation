@@ -3,4 +3,5 @@ file_path=data.csv
 output_file=selectorWeight_data_gpt.properties
 
 [columns_csv]
-cols=ElementName, Langage, Tag, Prop1, Prop2, Prop3, Prop4, Prop5
+# Utilisation du format JSON pour la liste
+cols=["ElementName", "Langage", "Tag", "Prop1", "Prop2", "Prop3", "Prop4", "Prop5"]

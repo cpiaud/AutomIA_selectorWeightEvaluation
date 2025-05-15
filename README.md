@@ -1,4 +1,4 @@
-# AutomIA_selectorWeightEvaluation Version 01
+# AutomIA_selectorWeightEvaluation Version 02
 Use Machine Learning to evaluate Weight of properties to find Element with AutomIA_ElementFinder.
 
 Ce travail consite à déterminer les poids de chaque propriété en utilisant les méthodes de machine learning(clustring) et de l'IA(OpenAI) :
@@ -97,7 +97,7 @@ Lister dans le code open_ai_approch2.py dans la section messages les propriété
         - index
 ```
 
-## 4-Installation et exécution 
+### 4-Installation et exécution 
 - Créer un environement virtuel :
 ```bash
 Python -m venv myenv
@@ -112,7 +112,7 @@ pip install -r requirements.txt
 ```bash
 python open_ai_approch2.py
 ```
-## Resultats
+### 5-Resultats
 Les résultats obtenus avec les deux approches(voir weights/...) sont comparables en ce qui concerne la force des poids obtenus. 
 
 NB : les valeurs des poids ne sont pas identiques pour les deux approches, mais elles peuvent être expliquées de la même manière.Voci un exemple des résultats pour les données utilisés (data.csv):
@@ -134,3 +134,53 @@ NB : les valeurs des poids ne sont pas identiques pour les deux approches, mais 
 
 
 Les approches sont généralisées , il suffit de suivre les étapes et les configurations nécessaires.
+
+## Approach 03: Calculate weights in pure Python based on property representativeness
+This approach uses the pure_python_approch3.py script to calculate attribute weights based on their frequency of appearance in a list of XPaths.
+
+### 1-Principle
+The script pure_python_approch3.py performs the following steps:
+
+- Reads a list of XPaths from a specified input file. Each line in the file is expected to be a single XPath.
+- Parses each XPath to find all attributes (e.g., @id, @class, @name).
+- Counts the occurrences of each unique attribute across all XPaths.
+- Calculates a weight for each attribute. The weight is determined by its frequency:
+    - The square root of the attribute's count is taken.
+    - This value is then divided by the square root of the maximum count found for any attribute (to normalize it).
+    - The result is multiplied by 100 and rounded to the nearest integer, yielding a weight between 0 and 100.
+    - Attributes that appear more frequently will receive higher weights.
+- Writes the calculated attribute weights to a specified output .properties file, with each line in the format attribute=weight.
+
+### 2-How to Use
+**Prerequisites**
+- Python 3 environment.
+- The script uses standard Python libraries (re, math, collections, argparse), so no special installation of external packages is required beyond a standard Python installation.
+**Execution**
+
+The script is run from the command line. It accepts two optional positional arguments:
+
+- input_file: (Optional) The path to the input file containing XPaths, one XPath per line.
+    - Default value: xpathsLists/xpath_GESICO.txt
+- output_file: (Optional) The path to the output .properties file where the attribute weights will be saved.
+    - Default value: weights/selectorWeight3.properties
+**Examples**
+
+- Using default input and output paths:
+```bash
+python pure_python_approch3.py
+```
+- Specifying only the input file (output will use default):
+```bash
+python pure_python_approch3.py my_xpath_list.txt
+```
+- Specifying both input and output files:
+```bash
+python pure_python_approch3.py path/to/your/xpaths.txt path/to/your/output_weights.properties
+```
+- Getting help on arguments:
+```bash
+python pure_python_approch3.py -h
+```
+**Output**
+
+The script generates a .properties file (e.g., selectorWeight3.properties) containing key-value pairs, where the key is the attribute name and the value is its calculated weight (0-100). The attributes are sorted by weight in descending order in the output file.
